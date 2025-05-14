@@ -1,0 +1,33 @@
+- name: install nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: present
+
+- name: start and enable nginx service
+  ansible.builtin.service:
+    state: started
+    enabled: yes
+
+- name: Recursively remove content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html/*
+    state: absent
+
+- name: downloading the content
+  ansible.builtin.command: curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip
+
+- name: unzip the content
+  ansible.builtin.unarchive:
+    src: /tmp/web.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
+
+- name: copy roboshop content
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf 
+
+- name: enable and restart the nginx
+  ansible.builtin.service:
+    state: restarted
+    enabled: yes

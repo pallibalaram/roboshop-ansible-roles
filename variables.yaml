@@ -1,0 +1,10 @@
+MONGODB_HOST: mongodb.pavandev.online 
+REDIS_HOST: redis.pavandev.online
+MYSQL_HOST: mysql.pavandev.online
+RABBITMQ_HOST: rabbitmq.pavandev.online
+CATALOGUE_HOST: catalogue.pavandev.online
+USER_HOST: user.pavandev.online
+CART_HOST: cart.pavandev.online
+SHIPPING_HOST: shipping.pavandev.online
+PAYMENT_HOST: payment.pavandev.online
+DISPATCH_HOST: dispatch.pavandev.online
